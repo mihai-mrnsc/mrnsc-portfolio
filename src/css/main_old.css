@@ -1,9 +1,66 @@
+@import url("https://fonts.googleapis.com/css?family=Merriweather:300,700,300italic,700italic|Source+Sans+Pro:900");
+
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
   background-color: #f0f2f5;
   color: #333;
 }
+header {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: white;
+  text-align: center;
+  padding: 100px 20px;
+  position: relative;
+}
+
+header h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+header p {
+  font-size: 1.2rem;
+  margin-top: 10px;
+}
+
+nav {
+  /* display: none; */
+  margin-top: 30px;
+}
+
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #64ffda;
+  font-weight: bold;
+}
+
+#navMenu {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav a {
+    margin: 10px 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  #navMenu.active {
+    display: flex;
+  }
+}
+
 header {
   display: flex;
   justify-content: space-between;
@@ -20,33 +77,41 @@ header {
   font-size: 1rem;
   margin: 0;
 }
+.nav-social {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/* nav {
+  margin: 0;
+  display: flex;
+  align-items: center;
+} */
+nav a {
+  margin: 0 15px;
+  text-decoration: none;
+  color: #64ffda;
+  font-weight: bold;
+}
 .header-social-icons {
   margin-top: 20px;
   display: flex;
   margin-left: 20px;
-  align-items: center;
 }
 .header-social-icons a {
-  color: #ffffff !important;
-  margin: 0 10px !important;
-  font-size: 1.3rem;
+  color: #ffffff;
+  margin: 0 8px;
+  font-size: 1.4rem;
   transition: color 0.3s;
 }
 .header-social-icons a:hover {
   color: #808080;
 }
-
-.social-icons {
+.header-social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-top: 20px;
-}
-.social-icons a {
-  color: #ffffff;
-  margin: 0 10px;
-  font-size: 1.8rem;
-  transition: color 0.3s;
-}
-.social-icons a:hover {
-  color: #808080;
 }
 
 section {
@@ -77,7 +142,18 @@ footer {
   color: white;
   font-size: 0.9rem;
 }
-
+.social-icons {
+  margin-top: 20px;
+}
+.social-icons a {
+  color: #ffffff;
+  margin: 0 10px;
+  font-size: 1.8rem;
+  transition: color 0.3s;
+}
+.social-icons a:hover {
+  color: #808080;
+}
 a.button {
   display: inline-block;
   margin-top: 15px;
@@ -89,31 +165,7 @@ a.button {
   font-weight: bold;
 }
 
-#hamburger {
-  display: none;
-  font-size: 2rem;
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  /* margin-left: auto; */
-}
-
-#nav-menu {
-  display: flex;
-  align-items: center;
-  /* margin-top: 30px; */
-  gap: 20px;
-}
-
-#nav-menu a {
-  margin: 0 15px;
-  text-decoration: none;
-  color: #64ffda;
-  font-weight: bold;
-}
-
-#nav-menu.open {
+nav.open {
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -126,28 +178,28 @@ a.button {
   z-index: 1000;
 }
 
-.nav-links {
+nav.show {
   display: flex;
-  align-items: center;
-  gap: 15px;
 }
 
-#nav-menu > .nav-links a {
-  color: 64ffda;
+#hamburger {
+  margin-left: 100px;
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
-@media screen and (max-width: 768px) {
-  #hamburger {
-    display: block;
-    position: absolute;
-    top: 30px;
-    right: 30px;
-  }
+#nav-menu {
+  display: flex;
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
   #nav-menu {
-    display: none;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
     background-color: #203a43;
     position: fixed;
     top: 0;
@@ -158,29 +210,14 @@ a.button {
     transition: right 0.3s ease;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.5);
     z-index: 1000;
-
-    .nav-links {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 20px;
-    }
-
-    header {
-      position: relative;
-    }
-  }
-
-  #nav-menu a {
-    margin: 10px 0;
   }
 
   #nav-menu.show {
-    display: flex;
     right: 0;
   }
 
   #hamburger {
     display: block;
+    cursor: pointer;
   }
 }

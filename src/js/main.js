@@ -19,3 +19,28 @@
  navMenu.addEventListener('click', (e) => {
    e.stopPropagation();
  });
+
+// -------------------------------
+// Load GitHub Repositories
+// -------------------------------
+const projectsContainer = document.querySelector('.projects');
+
+fetch('https://api.github.com/users/mihai-mrnsc/repos')
+  .then(res => res.json())
+  .then(repos => {
+    repos
+      .filter(repo => !repo.fork && repo.description) // opțional: doar proiectele originale cu descriere
+      .forEach(repo => {
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+          <h3><a href="${repo.html_url}" target="_blank">${repo.name}</a></h3>
+          <p>${repo.description}</p>
+        `;
+        projectsContainer.appendChild(card);
+      });
+  })
+  .catch(err => {
+    console.error('Error fetching GitHub repos:', err);
+    projectsContainer.innerHTML = '<p>Could not load GitHub projects at this time.</p>';
+  });
